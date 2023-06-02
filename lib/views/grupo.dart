@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:http/http.dart'as http;
+import 'package:http/http.dart' as http;
 
 class Grupo extends StatefulWidget {
   const Grupo({super.key});
@@ -14,6 +14,32 @@ class _GrupoState extends State<Grupo> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   TextEditingController _descricao = TextEditingController();
   TextEditingController _valor = TextEditingController();
+
+  void _showDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // retorna um objeto do tipo Dialog
+        return AlertDialog(
+          title: const Text("Voltar para home"),
+          content: const Text("Salvo com sucesso."),
+          actions: <Widget>[
+            // define os botões na base do dialogo
+            TextButton(
+              style: TextButton.styleFrom(
+                textStyle: Theme.of(context).textTheme.labelLarge,
+              ),
+              child: const Text('Ok'),
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).pop();
+              },
+            )
+          ],
+        );
+      },
+    );
+  }
 
   salvarGrupo(var des, var valor) async {
     final response = await http.post(
@@ -33,7 +59,7 @@ class _GrupoState extends State<Grupo> {
     if (response.statusCode == 200) {
       _showDialog();
     } else {
-      _showDialogErro();
+      // _showDialogErro();
       throw Exception('falha na criacao do grupo.');
     }
 

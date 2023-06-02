@@ -9,9 +9,6 @@ class Alocacao extends StatefulWidget {
 }
 
 class _AlocacaoState extends State<Alocacao> {
-
-  
-
   void _abrirGrupo() {
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => const Grupo()));
@@ -35,7 +32,7 @@ class _AlocacaoState extends State<Alocacao> {
                         borderRadius: BorderRadius.circular(30)),
                     backgroundColor: const Color.fromARGB(255, 95, 247, 84)),
                 icon: const Icon(
-                  Icons.group,
+                  Icons.car_crash_rounded,
                   size: 40,
                 ),
                 label: const Text(
